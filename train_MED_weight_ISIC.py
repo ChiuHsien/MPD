@@ -151,7 +151,7 @@ def main(args):
                 input_images = batch["input_image"].to(device)  # 展開圖像
                 B = x.size()[0]
 
-                loss = trainer(x, input_images, w=mpd_w=mpd_w).sum() / B ** 2.
+                loss = trainer(x, input_images, mpd_w=mpd_w).sum() / B ** 2.
                 accelerator.backward(loss)
                 torch.nn.utils.clip_grad_norm_(model.parameters(), 1)
 
